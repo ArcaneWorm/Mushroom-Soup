@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SpriteBillboard : MonoBehaviour
 {
-    [SerializeField] bool freezeXZAxis = true;
+    public bool Active;
+    public bool QuickReset;
 
-    // Update is called once per frame
-    void Update()
+    void OnRenderObject()
     {
-        if (freezeXZAxis)
+        if (Active) transform.rotation = Camera.main.transform.rotation;
+        else if (QuickReset)
         {
-            transform.rotation = Quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f);
-        }
-        else
-        {
-            transform.rotation = Camera.main.transform.rotation;
+            transform.rotation = Quaternion.Euler(Vector3.zero);
+            QuickReset = false;
         }
     }
 }
