@@ -4,50 +4,10 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    // public string itemName;
-    // public bool playerInRange;
 
-    // public string GetItemName()
-    // {
-    //     return itemName;
-    // }
+    [SerializeField] string itemName = "DefaultItem";
+    [SerializeField] bool inRange = false;
 
-    // private void Update()
-    // {
-    //     if(Input.GetKeyDown(KeyCode.Mouse0) && playerInRange 
-    //     && SelectionManager.Instance.onTarget && gameObject.CompareTag("Collectable"))
-    //     {
-    //         // If inventory is not full
-    //         if (!InventorySystem.Instance.CheckIfFull())
-    //         {
-    //             InventorySystem.Instance.AddToInventory(itemName);
-    //             Destroy(gameObject);
-    //         }
-    //         else // Inventory is full
-    //         {
-    //             Debug.Log("Inventory is full!");
-    //         }
-            
-    //     }
-
-    // }
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Player"))
-    //     {
-    //         playerInRange = true;
-    //     }
-    // }
-
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     if (other.CompareTag("Player"))
-    //     {
-    //         playerInRange = false;
-    //     }
-    // }
-    [SerializeField] private string itemName = "DefaultItem";
 
     public string GetItemName()
     {
@@ -71,5 +31,28 @@ public class InteractableObject : MonoBehaviour
         {
             Debug.Log("Inventory is full!");
         }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player in range.");
+            inRange = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player exited range.");
+            inRange = false;
+        }
+    }
+
+    public bool IsInRange()
+    {
+        return inRange;
     }
 }

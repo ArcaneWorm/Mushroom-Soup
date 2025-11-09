@@ -96,7 +96,7 @@ public class InventorySystem : MonoBehaviour
 
         }
 
-        if (counter == 14)
+        if (counter == 9)
         {
             return true;
         }
