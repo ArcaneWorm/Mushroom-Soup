@@ -19,17 +19,19 @@ public class InteractableObject : MonoBehaviour
     {
         Debug.Log("Picked up: " + itemName);
 
-        // Check if inventory is full
-        if (!InventorySystem.Instance.CheckIfFull())
-        {
-            InventorySystem.Instance.AddToInventory(itemName);
+        if (SelectionManager.Instance.selectedObject == gameObject) {
+            // Check if inventory is full
+            if (!InventorySystem.Instance.CheckIfFull())
+            {
+                InventorySystem.Instance.AddToInventory(itemName);
 
             // Destroy the object in the world after adding it
             Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("Inventory is full!");
+            }
+            else
+            {
+                Debug.Log("Inventory is full!");
+            }
         }
     }
 
