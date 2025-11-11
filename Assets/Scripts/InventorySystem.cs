@@ -56,26 +56,12 @@ public class InventorySystem : MonoBehaviour
 
     public void AddToInventory(string itemName)
     {
-        // slotToEquip = FindNextSlot();
-
-        // itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), slotToEquip.transform.position, slotToEquip.transform.rotation);
-        // itemToAdd.transform.SetParent(slotToEquip.transform);
-
-        // itemList.Add(itemName);
-            
         slotToEquip = FindNextSlot();
         if (slotToEquip == null)
         {
             Debug.LogWarning("Tried to add item, but inventory is full!");
             return;
         }
-
-        // GameObject prefab = Resources.Load<GameObject>(itemName);
-        // if (prefab == null)
-        // {
-        //     Debug.LogError($"Could not find prefab for item '{itemName}' in Resources!");
-        //     return;
-        // }
 
         itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), slotToEquip.transform.position, slotToEquip.transform.rotation);
         itemToAdd.transform.SetParent(slotToEquip.transform);
@@ -93,8 +79,8 @@ public class InventorySystem : MonoBehaviour
             {
                 if (slotList[i].transform.GetChild(0).name == nameToRemove + "(Clone)" && counter != 0)
                 {
-                    Destroy(slotList[i].transform.GetChild(0).gameObject);
-
+                    //Destroy the object immediately in case we need to add a crafted object right after
+                    DestroyImmediate(slotList[i].transform.GetChild(0).gameObject);
                     counter -= 1;
                 }
             }
@@ -149,6 +135,8 @@ public class InventorySystem : MonoBehaviour
                 string name = slot.transform.GetChild(0).name; // Material (Clone)
                 string str2 = "(Clone)";
                 string result = name.Replace(str2, "");
+
+                itemList.Add(result);
             }
         }
     }

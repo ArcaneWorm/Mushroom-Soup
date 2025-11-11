@@ -23,7 +23,7 @@ public class CraftingSystem : MonoBehaviour
     bool isOpen;
 
     // All Blueprints
-    public CraftingBlueprint FenceBLP = new CraftingBlueprint("Fence", 1, "Wood", 4);
+    public CraftingBlueprint FenceBLP = new CraftingBlueprint("Fence", 1, "Tree", 4);
 
 
     public static CraftingSystem instance {get; set;}
@@ -63,9 +63,6 @@ public class CraftingSystem : MonoBehaviour
 
     void CraftAnyItem(CraftingBlueprint blueprintToCraft)
     {
-        // Add item into inventory
-        InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
-
         // Remove resources from inventory
         if (blueprintToCraft.numOfRequirements == 1)
         {
@@ -77,19 +74,22 @@ public class CraftingSystem : MonoBehaviour
             InventorySystem.Instance.RemoveItem(blueprintToCraft.Req2, blueprintToCraft.Req2amount);
         }
 
+        // Add item into inventory
+        InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
+
         // Refresh list
-        //InventorySystem.Instance.ReCalculateList();
-        StartCoroutine(calculate());
+        // StartCoroutine(calculate());
+        InventorySystem.Instance.ReCalculateList();
 
         RefreshNeededItems();
     }
 
-    public IEnumerator calculate()
-    {
-        yield return new WaitForSeconds(1f);
+    // public IEnumerator calculate()
+    // {
+    //     yield return new WaitForSeconds(1f);
 
-        InventorySystem.Instance.ReCalculateList();
-    }
+    //     InventorySystem.Instance.ReCalculateList();
+    // }
 
     // Update is called once per frame
     void Update()
