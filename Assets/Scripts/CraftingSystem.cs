@@ -108,6 +108,8 @@ public class CraftingSystem : MonoBehaviour
             creatureScreenUI.SetActive(false);
             isOpen = false;
         }
+
+        RefreshNeededItems(); // Belongs at the beginning of Update(), not working
     }
 
     private void RefreshNeededItems()
