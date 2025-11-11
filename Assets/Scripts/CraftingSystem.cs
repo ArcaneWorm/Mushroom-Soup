@@ -23,7 +23,7 @@ public class CraftingSystem : MonoBehaviour
     bool isOpen;
 
     // All Blueprints
-
+    public CraftingBlueprint FenceBLP = new CraftingBlueprint("Fence", 1, "Wood", 4);
 
 
     public static CraftingSystem instance {get; set;}
@@ -52,7 +52,7 @@ public class CraftingSystem : MonoBehaviour
         fenceReq1 = creatureScreenUI.transform.Find("Fence").transform.Find("req1").GetComponent<TextMeshProUGUI>();
 
         craftFenceBTN = creatureScreenUI.transform.Find("Fence").transform.Find("CraftButton").GetComponent<Button>();
-        craftFenceBTN.onClick.AddListener(delegate{ CraftAnyItem(); });
+        craftFenceBTN.onClick.AddListener(delegate{ CraftAnyItem(FenceBLP); });
     }
 
     void OpenCreatureCategory()
@@ -61,16 +61,41 @@ public class CraftingSystem : MonoBehaviour
         creatureScreenUI.SetActive(true);
     }
 
-    void CraftAnyItem()
+    void CraftAnyItem(CraftingBlueprint blueprintToCraft)
     {
         // Add item into inventory
+        InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
 
         // Remove resources from inventory
+        if (blueprintToCraft.numOfRequirements == 1)
+        {
+            InventorySystem.Instance.RemoveItem(blueprintToCraft.Req1, blueprintToCraft.Req1amount);
+        }
+        else if (blueprintToCraft.numOfRequirements == 2)
+        {
+            InventorySystem.Instance.RemoveItem(blueprintToCraft.Req1, blueprintToCraft.Req1amount);
+            InventorySystem.Instance.RemoveItem(blueprintToCraft.Req2, blueprintToCraft.Req2amount);
+        }
+
+        // Refresh list
+        //InventorySystem.Instance.ReCalculateList();
+        StartCoroutine(calculate());
+
+        RefreshNeededItems();
+    }
+
+    public IEnumerator calculate()
+    {
+        yield return new WaitForSeconds(1f);
+
+        InventorySystem.Instance.ReCalculateList();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //RefreshNeededItems(); // Won't open crafting system with this, won't update amount of wood collected with ... ?? FIXME
+
         if (Input.GetKeyDown(KeyCode.C) && !isOpen)
         {
             Debug.Log("i is pressed");
@@ -82,6 +107,37 @@ public class CraftingSystem : MonoBehaviour
             craftingScreenUI.SetActive(false);
             creatureScreenUI.SetActive(false);
             isOpen = false;
+        }
+    }
+
+    private void RefreshNeededItems()
+    {
+        int wood_count = 0;
+
+        inventoryItemList = InventorySystem.Instance.itemList;
+
+        foreach (string itemName in inventoryItemList)
+        {
+            switch (itemName)
+            {
+                case "Tree":
+                    wood_count += 1;
+                    break;
+                // case ///;
+            }
+        }
+
+        // ---- Fence ---- //
+
+        fenceReq1.text = "4 Wood [" + wood_count + "]";
+
+        if (wood_count >= 4)
+        {
+            craftFenceBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftFenceBTN.gameObject.SetActive(false);
         }
     }
 }
