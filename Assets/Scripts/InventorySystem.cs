@@ -32,8 +32,6 @@ public class InventorySystem : MonoBehaviour
 
     void Start()
     {
-        //isOpen = false;
-        //isFull = false;
         PopulateSlotList();
     }
  
@@ -49,9 +47,7 @@ public class InventorySystem : MonoBehaviour
 
     void Update()
     {
-            //inventoryScreenUI.SetActive(true);
-            //Cursor.lockState = CursorLockMode.None;
-            //isOpen = true;
+            
     }
 
     public void AddToInventory(string itemName)

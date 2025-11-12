@@ -98,7 +98,7 @@ public class CraftingSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C) && !isOpen)
         {
-            Debug.Log("i is pressed");
+            Debug.Log("c is pressed");
             craftingScreenUI.SetActive(true);
             isOpen = true;
         }
