@@ -621,7 +621,8 @@ GameObject:
   - component: {fileID: 159839182}
   - component: {fileID: 159839181}
   - component: {fileID: 159839180}
-  m_Layer: 0
+  - component: {fileID: 159839183}
+  m_Layer: 6
   m_Name: Terrain_(1000.00, 0.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,6 +704,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 846137007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &159839183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159839179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: b5432f13b92246d459502db4a5772856, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &305178201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1251,8 @@ GameObject:
   - component: {fileID: 383395912}
   - component: {fileID: 383395911}
   - component: {fileID: 383395910}
-  m_Layer: 0
+  - component: {fileID: 383395913}
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1301,6 +1334,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 846137007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383395913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383395909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: f4d664c57c9523b49a41df790773e464, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &423158255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3737078548447016925, guid: 452c7cdb80e118e488a7cced8d05066d, type: 3}
@@ -4394,7 +4458,7 @@ GameObject:
   - component: {fileID: 1792497106}
   - component: {fileID: 1792497108}
   - component: {fileID: 1792497109}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerSprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5264,6 +5328,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077897907}
   m_CullTransparentMesh: 1
+--- !u!1001 &2126169204120954721
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1956704157616840482, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1792497102}
+    - target: {fileID: 5992069120052102197, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1438.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992069120052102197, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992069120052102197, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 241.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992069120052102197, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992069120052102197, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992069120052102197, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992069120052102197, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992069120052102197, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992069120052102197, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992069120052102197, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378423512557687646, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701924671381333097, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
+      propertyPath: m_Name
+      value: CreatureHostile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bedabb61d731dfb43a8760ed583572f5, type: 3}
 --- !u!1001 &7687359983500233861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5336,3 +5465,4 @@ SceneRoots:
   - {fileID: 1499707021}
   - {fileID: 904934765}
   - {fileID: 843909490}
+  - {fileID: 2126169204120954721}
