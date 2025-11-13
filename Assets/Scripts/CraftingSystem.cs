@@ -23,8 +23,11 @@ public class CraftingSystem : MonoBehaviour
     bool isOpen;
 
     // All Blueprints
+    //public CraftingBlueprint StickBLP = new CraftingBlueprint("Stick", 2, "Tree", 1);
     public CraftingBlueprint FenceBLP = new CraftingBlueprint("Fence", 1, "Tree", 4);
-
+    //public CraftingBlueprint GateBLP = new CraftingBlueprint("Gate", 1, "Tree", 5); //?? 3-5 wood
+    //public CraftingBlueprint CampfireBLP = new CraftingBlueprint("Campfire", 2, "Tree", 3, "Stick", 3); // ?? recipe
+    //public CraftingBlueprint GardenBLP = new CraftingBlueprint("GardenBed", 1, "Tree", 4);
 
     public static CraftingSystem instance {get; set;}
 
