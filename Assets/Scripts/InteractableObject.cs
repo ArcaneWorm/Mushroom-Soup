@@ -25,8 +25,8 @@ public class InteractableObject : MonoBehaviour
             {
                 InventorySystem.Instance.AddToInventory(itemName);
 
-            // Destroy the object in the world after adding it
-            Destroy(gameObject);
+                // Destroy the object in the world after adding it
+                Destroy(gameObject);
             }
             else
             {

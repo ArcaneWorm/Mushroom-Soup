@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 744484251146005321}
   - component: {fileID: 6727093009363268128}
   - component: {fileID: 7486816774202187750}
+  - component: {fileID: -2239380237147046919}
   m_Layer: 5
   m_Name: Fence
   m_TagString: Untagged
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  trashUI: {fileID: 0}
 --- !u!225 &7486816774202187750
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -102,3 +104,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &-2239380237147046919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5307822443073701028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c2a88425629b44a87253f17b23606b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTrashable: 1
+  isConsumable: 0
+  healthEffect: 0

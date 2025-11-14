@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CraftingSystem : MonoBehaviour
 {
+    public static CraftingSystem Instance { get; set; }
     public GameObject craftingScreenUI;
     public GameObject creatureScreenUI;
 
@@ -29,17 +30,15 @@ public class CraftingSystem : MonoBehaviour
     //public CraftingBlueprint CampfireBLP = new CraftingBlueprint("Campfire", 2, "Tree", 3, "Stick", 3); // ?? recipe
     //public CraftingBlueprint GardenBLP = new CraftingBlueprint("GardenBed", 1, "Tree", 4);
 
-    public static CraftingSystem instance {get; set;}
-
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 
@@ -115,9 +114,10 @@ public class CraftingSystem : MonoBehaviour
         RefreshNeededItems(); // Belongs at the beginning of Update(), not working
     }
 
-    private void RefreshNeededItems()
+    public void RefreshNeededItems()
     {
         int wood_count = 0;
+        int cattail_count = 0;
 
         inventoryItemList = InventorySystem.Instance.itemList;
 
@@ -128,7 +128,9 @@ public class CraftingSystem : MonoBehaviour
                 case "Tree":
                     wood_count += 1;
                     break;
-                // case ///;
+                case "Goopy Cattail":
+                    cattail_count += 1;
+                    break;
             }
         }
 

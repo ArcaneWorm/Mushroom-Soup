@@ -10,17 +10,24 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     [SerializeField] Canvas canvas;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
- 
+
     public static GameObject itemBeingDragged;
     Vector3 startPosition;
     Transform startParent;
- 
- 
- 
+
+    public GameObject trashUI;
+
+
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+    }
+    
+    private void Start()
+    {
+        trashUI = InventorySystem.Instance.inventoryScreenUI.transform.Find("Trash").gameObject;
     }
  
  
@@ -35,6 +42,10 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         startParent = transform.parent;
         transform.SetParent(transform.root);
         itemBeingDragged = gameObject;
+
+        
+        //Show trash slot UI
+        trashUI.SetActive(true);
  
     }
  
@@ -42,27 +53,32 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         //So the item will move with our mouse (at same speed)  and so it will be consistant if the canvas has a different scale (other then 1);
         rectTransform.anchoredPosition += eventData.delta;
- 
+
     }
- 
- 
- 
+
+
+
     public void OnEndDrag(PointerEventData eventData)
     {
- 
+
         itemBeingDragged = null;
- 
+
         if (transform.parent == startParent || transform.parent == transform.root)
         {
             transform.position = startPosition;
             transform.SetParent(startParent);
- 
+
         }
- 
+
         Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+
+        //Hide trash slot UI
+        trashUI.SetActive(false);
     }
+    
+    
  
  
  

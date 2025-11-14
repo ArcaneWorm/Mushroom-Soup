@@ -35,4 +35,14 @@ public class PlayerState : MonoBehaviour
             Debug.Log("You have died!");
         }
     }
+
+    public void SetHealth(float amount)
+    {
+        currentHealth = amount;
+    }
+
+    public bool AtMaxHealth()
+    {
+        return currentHealth >= maxHealth;
+    }
 }

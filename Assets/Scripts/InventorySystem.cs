@@ -11,11 +11,14 @@ public class InventorySystem : MonoBehaviour
 
     public List<GameObject> slotList = new List<GameObject>();
     public List<string> itemList = new List<string>();
+
+    // How many items you can have in a stack
+    public int stackLimit = 5;
+
     private GameObject itemToAdd;
     private GameObject slotToEquip;
 
-    //public bool isOpen;
-    //public bool isFull;
+
  
     private void Awake()
     {
@@ -52,17 +55,26 @@ public class InventorySystem : MonoBehaviour
 
     public void AddToInventory(string itemName)
     {
-        slotToEquip = FindNextSlot();
-        if (slotToEquip == null)
+        GameObject stack = CheckIfStackExists(itemName);
+
+        if (stack != null)
         {
-            Debug.LogWarning("Tried to add item, but inventory is full!");
-            return;
+            stack.GetComponent<InventorySlot>().itemInSlot.amountInInventory++; 
         }
+        else
+        {
+           slotToEquip = FindNextSlot();
+            if (slotToEquip == null)
+            {
+                Debug.LogWarning("Tried to add item, but inventory is full!");
+                return;
+            }
 
-        itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), slotToEquip.transform.position, slotToEquip.transform.rotation);
-        itemToAdd.transform.SetParent(slotToEquip.transform);
+            itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), slotToEquip.transform.position, slotToEquip.transform.rotation);
+            itemToAdd.transform.SetParent(slotToEquip.transform);
 
-        itemList.Add(itemName);
+            itemList.Add(itemName); 
+        }
     }
 
     public void RemoveItem(string nameToRemove, int amountToRemove)
@@ -89,7 +101,7 @@ public class InventorySystem : MonoBehaviour
 
         foreach (GameObject slot in slotList)
         {
-            if (slot.transform.childCount > 0)
+            if (slot.transform.childCount > 1)
             {
                 counter += 1;
             }
@@ -107,11 +119,11 @@ public class InventorySystem : MonoBehaviour
     }
     
 
-    private GameObject FindNextSlot()
+    public GameObject FindNextSlot()
     {
         foreach (GameObject slot in slotList)
         {
-            if (slot.transform.childCount == 0)
+            if (slot.transform.childCount <= 1)
             {
                 return slot;
             }
@@ -136,5 +148,24 @@ public class InventorySystem : MonoBehaviour
             }
         }
     }
- 
+    
+    public GameObject CheckIfStackExists(string itemName)
+    {
+        foreach (GameObject slot in slotList)
+        {
+            InventorySlot inventorySlot = slot.GetComponent<InventorySlot>();
+            if (inventorySlot != null && inventorySlot.itemInSlot != null)
+            {
+                if (inventorySlot.itemInSlot.thisName == itemName &&
+                    inventorySlot.itemInSlot.amountInInventory < stackLimit)
+                {
+                    return slot;
+                }
+            }
+        }
+        return null;
+    }
+
+
+
 }
