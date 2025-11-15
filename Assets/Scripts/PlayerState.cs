@@ -10,6 +10,9 @@ public class PlayerState : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
 
+
+    public GameOverScreen gameOverScreen;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,9 +33,9 @@ public class PlayerState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
-            Debug.Log("You have died!");
+            DisplayGameOver();
         }
     }
 
@@ -44,5 +47,10 @@ public class PlayerState : MonoBehaviour
     public bool AtMaxHealth()
     {
         return currentHealth >= maxHealth;
+    }
+
+    public void DisplayGameOver()
+    {
+        gameOverScreen.Setup();
     }
 }

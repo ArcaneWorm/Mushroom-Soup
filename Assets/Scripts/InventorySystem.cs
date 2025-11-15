@@ -79,20 +79,55 @@ public class InventorySystem : MonoBehaviour
 
     public void RemoveItem(string nameToRemove, int amountToRemove)
     {
-        int counter = amountToRemove;
+        // int counter = amountToRemove;
 
-        for (var i = slotList.Count - 1; i >= 0; i--)
+        // for (var i = slotList.Count - 1; i >= 0; i--)
+        // {
+        //     if (slotList[i].transform.childCount > 0)
+        //     {
+        //         if (slotList[i].transform.GetChild(0).name == nameToRemove + "(Clone)" && counter != 0)
+        //         {
+        //             //Destroy the object immediately in case we need to add a crafted object right after
+        //             DestroyImmediate(slotList[i].transform.GetChild(0).gameObject);
+        //             counter -= 1;
+        //         }
+        //     }
+        // }
+
+        int remaining = amountToRemove;
+
+        // Loop through slots from last to first
+        for (int i = slotList.Count - 1; i >= 0; i--)
         {
-            if (slotList[i].transform.childCount > 0)
+            if (remaining <= 0)
+                break;
+
+            if (slotList[i].transform.childCount > 1)
             {
-                if (slotList[i].transform.GetChild(0).name == nameToRemove + "(Clone)" && counter != 0)
+                InventoryItem item = slotList[i].transform.GetChild(0).GetComponent<InventoryItem>();
+
+                if (item.thisName == nameToRemove)
                 {
-                    //Destroy the object immediately in case we need to add a crafted object right after
-                    DestroyImmediate(slotList[i].transform.GetChild(0).gameObject);
-                    counter -= 1;
+                    // Case 1 — Stack has enough items to cover the removal
+                    if (item.amountInInventory > remaining)
+                    {
+                        item.amountInInventory -= remaining;
+                        remaining = 0;
+                    }
+                    else
+                    {
+                        // Case 2 — Stack has less or exactly the amount needed 
+                        remaining -= item.amountInInventory;
+
+                        // Remove the whole stack
+                        DestroyImmediate(item.gameObject);
+                    }
                 }
             }
-        }
+    }
+
+    // Update the inventory list after changes
+    ReCalculateList();
     }
 
     public bool CheckIfFull()

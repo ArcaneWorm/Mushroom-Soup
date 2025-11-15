@@ -41,7 +41,15 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             if (isConsumable && itemPendingConsumption == gameObject)
             {
-                Destroy(gameObject);
+                // Consume ONE from the stack
+                amountInInventory--;
+
+                if (amountInInventory <= 0)
+                {
+                    // Stack is empty, destroy item
+                    Destroy(gameObject);
+                }
+
                 InventorySystem.Instance.ReCalculateList();
                 CraftingSystem.Instance.RefreshNeededItems();
             }

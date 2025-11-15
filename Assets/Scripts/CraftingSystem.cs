@@ -41,7 +41,7 @@ public class CraftingSystem : MonoBehaviour
     public CraftingBlueprint FenceBLP = new CraftingBlueprint("Fence", 1, "Tree", 4);
     public CraftingBlueprint GateBLP = new CraftingBlueprint("Gate", 1, "Tree", 5); //?? 3-5 wood
     public CraftingBlueprint CampfireBLP = new CraftingBlueprint("Campfire", 2, "Tree", 2, "Goopy Cattail", 2); // ?? recipe
-    public CraftingBlueprint GardenBLP = new CraftingBlueprint("GardenBed", 1, "Tree", 4);
+    public CraftingBlueprint GardenBLP = new CraftingBlueprint("Garden Bed", 1, "Tree", 4);
 
     private void Awake()
     {
@@ -88,9 +88,9 @@ public class CraftingSystem : MonoBehaviour
         craftGateBTN.onClick.AddListener(delegate{ CraftAnyItem(GateBLP); });
 
         // Garden Bed
-        gardenBedReq1 = farmingScreenUI.transform.Find("Garden Bed").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        gardenBedReq1 = farmingScreenUI.transform.Find("GardenBed").transform.Find("req1").GetComponent<TextMeshProUGUI>();
 
-        craftGardenBedBTN = farmingScreenUI.transform.Find("Garden Bed").transform.Find("CraftButton").GetComponent<TextMeshProUGUI>();
+        craftGardenBedBTN = farmingScreenUI.transform.Find("GardenBed").transform.Find("CraftButton").GetComponent<Button>();
         craftGardenBedBTN.onClick.AddListener(delegate{ CraftAnyItem(GardenBLP); });
 
         // Campfire
@@ -98,7 +98,7 @@ public class CraftingSystem : MonoBehaviour
         campfireReq1 = survivalScreenUI.transform.Find("Campfire").transform.Find("req1").GetComponent<TextMeshProUGUI>();
         campfireReq2 = survivalScreenUI.transform.Find("Campfire").transform.Find("req2").GetComponent<TextMeshProUGUI>();
 
-        craftCampfireBTN = survivalScreenUI.transform.Find("Campfire").transform.Find("CraftButton").GetComponent<TextMeshProUGUI>();
+        craftCampfireBTN = survivalScreenUI.transform.Find("Campfire").transform.Find("CraftButton").GetComponent<Button>();
         craftCampfireBTN.onClick.AddListener(delegate{ CraftAnyItem(CampfireBLP); });
     }
 
@@ -178,20 +178,38 @@ public class CraftingSystem : MonoBehaviour
         int wood_count = 0;
         int cattail_count = 0;
 
-        inventoryItemList = InventorySystem.Instance.itemList;
+        // inventoryItemList = InventorySystem.Instance.itemList;
 
-        foreach (string itemName in inventoryItemList)
+        // foreach (string itemName in inventoryItemList)
+        // {
+        //     switch (itemName)
+        //     {
+        //         case "Tree":
+        //             wood_count += (int) itemName.amountInInventory;
+        //             break;
+        //         case "Goopy Cattail":
+        //             cattail_count += (int) itemName.amountInInventory;
+        //             break;
+        //     }
+        // }
+
+        // Get every InventoryItem in the inventory
+        InventoryItem[] allItems = InventorySystem.Instance.inventoryScreenUI.GetComponentsInChildren<InventoryItem>();
+
+        foreach (InventoryItem item in allItems)
         {
-            switch (itemName)
+            switch (item.thisName)
             {
                 case "Tree":
-                    wood_count += 1;
+                    wood_count += item.amountInInventory;
                     break;
+
                 case "Goopy Cattail":
-                    cattail_count += 1;
+                    cattail_count += item.amountInInventory;
                     break;
             }
         }
+
 
         // ---- Stick ---- //
 

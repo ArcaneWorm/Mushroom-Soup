@@ -119,3 +119,5 @@ MonoBehaviour:
   isTrashable: 1
   isConsumable: 1
   healthEffect: 10
+  amountInInventory: 1
+  thisName: Goopy Cattail

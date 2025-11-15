@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  trashUI: {fileID: 0}
 --- !u!225 &8373257507143945076
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -118,3 +119,5 @@ MonoBehaviour:
   isTrashable: 0
   isConsumable: 0
   healthEffect: 0
+  amountInInventory: 1
+  thisName: 

@@ -119,3 +119,5 @@ MonoBehaviour:
   isTrashable: 1
   isConsumable: 0
   healthEffect: 0
+  amountInInventory: 1
+  thisName: Fence
