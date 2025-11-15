@@ -9,26 +9,39 @@ public class CraftingSystem : MonoBehaviour
     public static CraftingSystem Instance { get; set; }
     public GameObject craftingScreenUI;
     public GameObject creatureScreenUI;
+    public GameObject farmingScreenUI;
+    public GameObject survivalScreenUI;
 
     public List<string> inventoryItemList = new List<string>();
 
     // Category Button
     Button creatureBTN;
+    Button farmingBTN;
+    Button survivalBTN;
 
     // Craft Button
     Button craftFenceBTN;
+    Button craftGateBTN;
+    Button craftGardenBedBTN;
+    Button craftCampfireBTN;
+    Button craftStickBTN;
 
     // Requirement Text
+    TextMeshProUGUI stickReq1;
     TextMeshProUGUI fenceReq1;
+    TextMeshProUGUI gateReq1;
+    TextMeshProUGUI gardenBedReq1;
+    TextMeshProUGUI campfireReq1;
+    TextMeshProUGUI campfireReq2;
 
     bool isOpen;
 
     // All Blueprints
-    //public CraftingBlueprint StickBLP = new CraftingBlueprint("Stick", 2, "Tree", 1);
+    public CraftingBlueprint StickBLP = new CraftingBlueprint("Stick", 1, "Tree", 1);
     public CraftingBlueprint FenceBLP = new CraftingBlueprint("Fence", 1, "Tree", 4);
-    //public CraftingBlueprint GateBLP = new CraftingBlueprint("Gate", 1, "Tree", 5); //?? 3-5 wood
-    //public CraftingBlueprint CampfireBLP = new CraftingBlueprint("Campfire", 2, "Tree", 3, "Stick", 3); // ?? recipe
-    //public CraftingBlueprint GardenBLP = new CraftingBlueprint("GardenBed", 1, "Tree", 4);
+    public CraftingBlueprint GateBLP = new CraftingBlueprint("Gate", 1, "Tree", 5); //?? 3-5 wood
+    public CraftingBlueprint CampfireBLP = new CraftingBlueprint("Campfire", 2, "Tree", 2, "Goopy Cattail", 2); // ?? recipe
+    public CraftingBlueprint GardenBLP = new CraftingBlueprint("GardenBed", 1, "Tree", 4);
 
     private void Awake()
     {
@@ -50,17 +63,61 @@ public class CraftingSystem : MonoBehaviour
         creatureBTN = craftingScreenUI.transform.Find("CreatureCareButton").GetComponent<Button>();
         creatureBTN.onClick.AddListener(delegate { OpenCreatureCategory(); });
 
+        farmingBTN = craftingScreenUI.transform.Find("FarmingButton").GetComponent<Button>();
+        farmingBTN.onClick.AddListener(delegate { OpenFarmingCategory(); });
+
+        survivalBTN = craftingScreenUI.transform.Find("SurvivalButton").GetComponent<Button>();
+        survivalBTN.onClick.AddListener(delegate { OpenSurvivalCategory(); });
+
+        // Stick
+        stickReq1 = survivalScreenUI.transform.Find("Stick").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+
+        craftStickBTN = survivalScreenUI.transform.Find("Stick").transform.Find("CraftButton").GetComponent<Button>();
+        craftStickBTN.onClick.AddListener(delegate{ CraftAnyItem(StickBLP); });
+
         // Fence
         fenceReq1 = creatureScreenUI.transform.Find("Fence").transform.Find("req1").GetComponent<TextMeshProUGUI>();
 
         craftFenceBTN = creatureScreenUI.transform.Find("Fence").transform.Find("CraftButton").GetComponent<Button>();
         craftFenceBTN.onClick.AddListener(delegate{ CraftAnyItem(FenceBLP); });
+
+        // Gate
+        gateReq1 = creatureScreenUI.transform.Find("Gate").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+
+        craftGateBTN = creatureScreenUI.transform.Find("Gate").transform.Find("CraftButton").GetComponent<Button>();
+        craftGateBTN.onClick.AddListener(delegate{ CraftAnyItem(GateBLP); });
+
+        // Garden Bed
+        gardenBedReq1 = farmingScreenUI.transform.Find("Garden Bed").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+
+        craftGardenBedBTN = farmingScreenUI.transform.Find("Garden Bed").transform.Find("CraftButton").GetComponent<TextMeshProUGUI>();
+        craftGardenBedBTN.onClick.AddListener(delegate{ CraftAnyItem(GardenBLP); });
+
+        // Campfire
+
+        campfireReq1 = survivalScreenUI.transform.Find("Campfire").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        campfireReq2 = survivalScreenUI.transform.Find("Campfire").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+
+        craftCampfireBTN = survivalScreenUI.transform.Find("Campfire").transform.Find("CraftButton").GetComponent<TextMeshProUGUI>();
+        craftCampfireBTN.onClick.AddListener(delegate{ CraftAnyItem(CampfireBLP); });
     }
 
     void OpenCreatureCategory()
     {
         craftingScreenUI.SetActive(false);
         creatureScreenUI.SetActive(true);
+    }
+
+    void OpenFarmingCategory()
+    {
+        craftingScreenUI.SetActive(false);
+        farmingScreenUI.SetActive(true);
+    }
+
+    void OpenSurvivalCategory()
+    {
+        craftingScreenUI.SetActive(false);
+        survivalScreenUI.SetActive(true);
     }
 
     void CraftAnyItem(CraftingBlueprint blueprintToCraft)
@@ -108,6 +165,8 @@ public class CraftingSystem : MonoBehaviour
         {
             craftingScreenUI.SetActive(false);
             creatureScreenUI.SetActive(false);
+            farmingScreenUI.SetActive(false);
+            survivalScreenUI.SetActive(false);
             isOpen = false;
         }
 
@@ -134,6 +193,19 @@ public class CraftingSystem : MonoBehaviour
             }
         }
 
+        // ---- Stick ---- //
+
+        stickReq1.text = "1 Wood [" + wood_count + "]";
+
+        if (wood_count >= 1)
+        {
+            craftStickBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftStickBTN.gameObject.SetActive(false);
+        }
+
         // ---- Fence ---- //
 
         fenceReq1.text = "4 Wood [" + wood_count + "]";
@@ -145,6 +217,49 @@ public class CraftingSystem : MonoBehaviour
         else
         {
             craftFenceBTN.gameObject.SetActive(false);
+        }
+
+
+        // ---- Gate ---- //
+
+        gateReq1.text = "5 Wood [" + wood_count + "]";
+
+        if (wood_count >= 5)
+        {
+            craftGateBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftGateBTN.gameObject.SetActive(false);
+        }
+
+
+        // ---- Garden Bed ---- //
+
+        gardenBedReq1.text = "4 Wood [" + wood_count + "]";
+
+        if (wood_count >= 4)
+        {
+            craftGardenBedBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftGardenBedBTN.gameObject.SetActive(false);
+        }
+
+
+        // ---- Campfire ---- //
+
+        campfireReq1.text = "2 Wood [" + wood_count + "]";
+        campfireReq2.text = "2 Cattails [" + cattail_count + "]";
+
+        if (wood_count >= 2 && cattail_count >= 2)
+        {
+            craftCampfireBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftCampfireBTN.gameObject.SetActive(false);
         }
     }
 }
