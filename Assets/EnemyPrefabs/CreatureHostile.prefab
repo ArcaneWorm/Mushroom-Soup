@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2524437595853682498}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.23, z: 0}
+  m_LocalPosition: {x: -2.55, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 6948794384205691351}
   - component: {fileID: 7733053283954918831}
   - component: {fileID: 1956704157616840482}
-  - component: {fileID: 1508545127417934467}
-  - component: {fileID: 6378423512557687646}
   - component: {fileID: 211249441217317003}
+  - component: {fileID: 1236457510155794142}
+  - component: {fileID: 2986248590983969250}
   m_Layer: 0
   m_Name: CreatureSprite
   m_TagString: Untagged
@@ -110,7 +110,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cf6478ef684ce7f4c830edba147c7607, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3499a398f58439342919f03d136b6d17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -140,8 +140,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.56, y: 2.56, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 8.624023, y: 3.7705693, z: 0.59998477}
+  m_Center: {x: -0.08666992, y: 0.12875056, z: -0.19999236}
 --- !u!114 &1956704157616840482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e38141fb4a83574c9f79fee3a1995b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navAgent: {fileID: 1508545127417934467}
+  navAgent: {fileID: 0}
   playerTransform: {fileID: 0}
   firePoint: {fileID: 4068575416439192093}
   projectilePrefab: {fileID: 3065178926745794303, guid: 42950639fbc2a04468a8cdfed5a4e664, type: 3}
@@ -170,29 +170,20 @@ MonoBehaviour:
   verticalShotForce: 5
   visionRange: 20
   engagementRange: 11
---- !u!195 &1508545127417934467
-NavMeshAgent:
+--- !u!114 &211249441217317003
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7599885377068847382}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 1.28
-  m_Speed: 5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 200
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2.56
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!54 &6378423512557687646
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faeba7a0f8dc2ab478727a1d51f664ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+--- !u!54 &1236457510155794142
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,21 +208,30 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &211249441217317003
-MonoBehaviour:
+--- !u!195 &2986248590983969250
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7599885377068847382}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faeba7a0f8dc2ab478727a1d51f664ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
+  m_AgentTypeID: 0
+  m_Radius: 4.405
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 4.01
+  m_BaseOffset: 2.005
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8701924671381333097
 GameObject:
   m_ObjectHideFlags: 0
