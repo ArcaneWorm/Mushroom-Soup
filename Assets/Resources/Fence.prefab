@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashable: 1
+  buildableData: {fileID: 11400000, guid: 90e97109e1d1cf0479f26087f72ae117, type: 2}
   isConsumable: 0
   healthEffect: 0
   amountInInventory: 1

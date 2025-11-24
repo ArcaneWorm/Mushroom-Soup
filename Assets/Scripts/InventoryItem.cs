@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    // --- Is this item trashable --- //
+    // Is this item trashable
     public bool isTrashable;
+    // If placeable, will have data, otherwise it will be null
+    public BuildableItem buildableData;
 
  
     // --- Consumption --- //
@@ -89,5 +91,4 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             }
         }
     }
- 
 }

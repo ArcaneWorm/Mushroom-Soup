@@ -9,7 +9,7 @@ public class TutorialMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.Escape))
+       if (Input.GetKeyDown(KeyCode.T))
         {
             tutorialUI.SetActive(!tutorialUI.activeSelf);
         } 

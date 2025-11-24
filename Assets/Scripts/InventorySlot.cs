@@ -7,6 +7,7 @@ public class InventorySlot : MonoBehaviour
 {
     public TextMeshProUGUI amountTXT;
     public InventoryItem itemInSlot;
+    public bool isBuildable = false; // If item is placeable
 
     private void Update()
     {
@@ -15,10 +16,19 @@ public class InventorySlot : MonoBehaviour
         if (item != null)
         {
             itemInSlot = item;
+            if (item.buildableData != null)
+            {
+                isBuildable = true;
+            }
+            else
+            {
+                isBuildable = false;
+            }
         }
         else
         {
             itemInSlot = null;
+            isBuildable = false;
         }
 
         if (itemInSlot != null)
@@ -44,4 +54,16 @@ public class InventorySlot : MonoBehaviour
         }
         return null;
     }
+
+    public void OnSlotClicked()
+    {
+        if (itemInSlot == null) return;
+
+        // If this slot has buildableData AND it matches the item in this slot
+        if (isBuildable)
+        {
+            PlacementSystem.Instance.StartPlacement(itemInSlot.buildableData);
+        }
+    }
+
 }
