@@ -29,7 +29,6 @@ public class PlaceablePreview : MonoBehaviour
 
     void CheckCollisions()
     {
-        // Perform box overlap
         Collider[] hits = Physics.OverlapBox(
             transform.position,
             checkSize / 2f,
@@ -37,8 +36,15 @@ public class PlaceablePreview : MonoBehaviour
             collisionLayers
         );
 
-        // Valid if no collisions
-        canPlace = hits.Length == 0;
-        // Debug.Log("canPlace = "+ canPlace);
+        canPlace = true;
+
+        foreach (Collider c in hits)
+        {
+            if (!c.isTrigger)   //ignore trigger colliders
+            {
+                canPlace = false;
+                break;
+            }
+        }
     }
 }

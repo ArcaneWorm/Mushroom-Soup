@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d17f461d521b748ba3970e88bff642, type: 3}
+  m_Name: Garden Bed
+  m_EditorClassIdentifier: 
+  itemID: Garden Bed
+  placedPrefab: {fileID: 4186444066791828246, guid: 8ef5e96e974b52147bf75c10eb654232, type: 3}
+  previewPrefab: {fileID: 4186444066791828246, guid: 1777437b898cb0a41bb31e65dd235ad0, type: 3}
+  maxPlaceDistance: 5

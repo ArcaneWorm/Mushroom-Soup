@@ -15,7 +15,7 @@ public class InteractableObject : MonoBehaviour
     }
 
     // This is called by SelectionManager when the player clicks
-    public void OnInteract()
+    public virtual void OnInteract()
     {
         Debug.Log("Picked up: " + itemName);
 

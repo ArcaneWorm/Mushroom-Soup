@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d17f461d521b748ba3970e88bff642, type: 3}
+  m_Name: Gate
+  m_EditorClassIdentifier: 
+  itemID: Gate
+  placedPrefab: {fileID: 7636738701380714696, guid: 36acf914abc385f4e95c564e0f4eb6e4, type: 3}
+  previewPrefab: {fileID: 5504651236868665675, guid: 738b401b16f46d143b9dd5c7365a6910, type: 3}
+  maxPlaceDistance: 5
