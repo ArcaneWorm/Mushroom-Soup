@@ -22,5 +22,7 @@ Play the WebGL Build: [Mushroom Soup](https://play.unity.com/en/games/76b52737-9
       - https://drive.google.com/file/d/1byTemITqTuMxEz7qQKUxLtI5z0RLHgOF/view?usp=share_link
 - Farming Demo:
       - [Demo](https://drive.google.com/file/d/1lfU02umSQBqqcFr258r1_5TVYc-C3M3b/view?usp=sharing)
+- Slideshow Video:
+      - https://drive.google.com/file/d/15v1Ezd2h_YycwLYPFtRTQ-FYeGvZcLNY/view?usp=sharing
 - Slideshow Presentation:
-      - ///
+      - https://docs.google.com/presentation/d/1J7NdZaGGqB7RdDKPtSotUwu53zN1O8Mgdc4Aj5L5n2o/edit?slide=id.g3a6d5c5b570_0_1105#slide=id.g3a6d5c5b570_0_1105
