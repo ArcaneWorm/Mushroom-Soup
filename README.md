@@ -2,6 +2,7 @@
 
 ## Setup Instructions:
 Play the WebGL Build: [Mushroom Soup](https://play.unity.com/en/games/76b52737-9190-4b61-9a18-6e222093350d/mushroom-soup-build) 
+Or:
 1. Download zip file and unzip
 2. Open project in Unity
     - Version 2022.3.50f or later
@@ -21,7 +22,7 @@ Play the WebGL Build: [Mushroom Soup](https://play.unity.com/en/games/76b52737-9
 - Demo featuring material collection, crafting, enemies, base building, and trash:
       - https://drive.google.com/file/d/1byTemITqTuMxEz7qQKUxLtI5z0RLHgOF/view?usp=share_link
 - Farming Demo:
-      - [Demo](https://drive.google.com/file/d/1lfU02umSQBqqcFr258r1_5TVYc-C3M3b/view?usp=sharing)
+      - https://drive.google.com/file/d/1lfU02umSQBqqcFr258r1_5TVYc-C3M3b/view?usp=sharing
 - Slideshow Video:
       - https://drive.google.com/file/d/15v1Ezd2h_YycwLYPFtRTQ-FYeGvZcLNY/view?usp=sharing
 - Slideshow Presentation:
