@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 859598782114994740}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1451.83, y: 0.25, z: 232.17}
+  m_LocalPosition: {x: 1451.83, y: 1.93, z: 232.17}
   m_LocalScale: {x: 0.11591778, y: 0.11713227, z: 0.11040839}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,9 +50,10 @@ MonoBehaviour:
   pickable: 0
   stageTimer: 0
   stageTimes:
+  - 10
+  - 30
   - 1
-  - 1
-  - 1
+  grownPrefab: {fileID: 7915747529515474178, guid: 7dd7c8befaca1c744968056bd1469495, type: 3}
 --- !u!1 &5335561783919053155
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +81,7 @@ Transform:
   m_GameObject: {fileID: 5335561783919053155}
   serializedVersion: 2
   m_LocalRotation: {x: 0.042224623, y: -0, z: -0, w: 0.99910814}
-  m_LocalPosition: {x: 0, y: 11, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6360855, y: 0.6360855, z: 0.6360855}
   m_ConstrainProportionsScale: 0
   m_Children: []

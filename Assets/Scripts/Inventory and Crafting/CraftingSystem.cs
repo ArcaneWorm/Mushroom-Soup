@@ -25,6 +25,7 @@ public class CraftingSystem : MonoBehaviour
     Button craftGardenBedBTN;
     Button craftCampfireBTN;
     Button craftStickBTN;
+    Button craftCattailSeedsBTN;
 
     // Requirement Text
     TextMeshProUGUI stickReq1;
@@ -33,8 +34,10 @@ public class CraftingSystem : MonoBehaviour
     TextMeshProUGUI gardenBedReq1;
     TextMeshProUGUI campfireReq1;
     TextMeshProUGUI campfireReq2;
+    TextMeshProUGUI cattailSeedReq1;
 
     bool isOpen;
+    bool hasGarden = false;
 
     // All Blueprints
     public CraftingBlueprint StickBLP = new CraftingBlueprint("Stick", 1, "Tree", 1);
@@ -42,6 +45,7 @@ public class CraftingSystem : MonoBehaviour
     public CraftingBlueprint GateBLP = new CraftingBlueprint("Gate", 1, "Tree", 5); //?? 3-5 wood
     public CraftingBlueprint CampfireBLP = new CraftingBlueprint("Campfire", 2, "Tree", 2, "Goopy Cattail", 2); // ?? recipe
     public CraftingBlueprint GardenBLP = new CraftingBlueprint("Garden Bed", 1, "Tree", 4);
+    public CraftingBlueprint CattailBLP = new CraftingBlueprint("Goopy Cattail Seeds", 1, "Goopy Cattail", 1);
 
     private void Awake()
     {
@@ -100,6 +104,13 @@ public class CraftingSystem : MonoBehaviour
 
         craftCampfireBTN = survivalScreenUI.transform.Find("Campfire").transform.Find("CraftButton").GetComponent<Button>();
         craftCampfireBTN.onClick.AddListener(delegate{ CraftAnyItem(CampfireBLP); });
+
+        // Goopy Cattail Seeds
+        cattailSeedReq1 = farmingScreenUI.transform.Find("GoopyCattailSeeds").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+
+        craftCattailSeedsBTN = farmingScreenUI.transform.Find("GoopyCattailSeeds").transform.Find("CraftButton").GetComponent<Button>();
+        craftCattailSeedsBTN.onClick.AddListener(delegate{ CraftAnyItem(CattailBLP); });
+
     }
 
     void OpenCreatureCategory()
@@ -135,6 +146,16 @@ public class CraftingSystem : MonoBehaviour
 
         // Add item into inventory
         InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
+        if(blueprintToCraft.itemName.Equals("Garden Bed"))
+        {
+            hasGarden = true;
+        }
+        else if(blueprintToCraft.itemName.Equals("Goopy Cattail Seeds"))
+        {
+            // Add another seed
+            InventorySystem.Instance.AddToInventory(blueprintToCraft.itemName);
+        }
+        
 
         // Refresh list
         // StartCoroutine(calculate());
@@ -142,13 +163,6 @@ public class CraftingSystem : MonoBehaviour
 
         RefreshNeededItems();
     }
-
-    // public IEnumerator calculate()
-    // {
-    //     yield return new WaitForSeconds(1f);
-
-    //     InventorySystem.Instance.ReCalculateList();
-    // }
 
     // Update is called once per frame
     void Update()
@@ -177,21 +191,6 @@ public class CraftingSystem : MonoBehaviour
     {
         int wood_count = 0;
         int cattail_count = 0;
-
-        // inventoryItemList = InventorySystem.Instance.itemList;
-
-        // foreach (string itemName in inventoryItemList)
-        // {
-        //     switch (itemName)
-        //     {
-        //         case "Tree":
-        //             wood_count += (int) itemName.amountInInventory;
-        //             break;
-        //         case "Goopy Cattail":
-        //             cattail_count += (int) itemName.amountInInventory;
-        //             break;
-        //     }
-        // }
 
         // Get every InventoryItem in the inventory
         InventoryItem[] allItems = InventorySystem.Instance.inventoryScreenUI.GetComponentsInChildren<InventoryItem>();
@@ -278,6 +277,18 @@ public class CraftingSystem : MonoBehaviour
         else
         {
             craftCampfireBTN.gameObject.SetActive(false);
+        }
+
+        // ---- Goopy Cattail Seeds ---- //
+        cattailSeedReq1.text = "1 Goopy Cattail [" + cattail_count + "]";
+
+        if(cattail_count >= 1 && hasGarden)
+        {
+            craftCattailSeedsBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftCattailSeedsBTN.gameObject.SetActive(false);
         }
     }
 }

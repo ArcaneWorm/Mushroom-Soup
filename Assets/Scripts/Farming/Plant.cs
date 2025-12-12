@@ -10,6 +10,9 @@ public class Plant : MonoBehaviour
     public bool pickable = false;
     public float stageTimer = 0f;
     public float[] stageTimes = {1.0f, 1.0f, 1.0f}; // How long each stage is
+    public GameObject grownPrefab;
+
+    Vector3 plantPosition;
     SpriteRenderer sr;
 
     private void Awake()
@@ -49,15 +52,22 @@ public class Plant : MonoBehaviour
         // Change color of sprite
         if(stage == 0)
         {
-            sr.color = Color.red;
+            sr.color = Color.yellow;
+            sr.transform.localScale = new Vector3(0.2f, 0.2f, 1f); // seed size
+            transform.position = new Vector3(transform.position.x, 0.15f, transform.position.z);
         }
         else if(stage == 1)
         {
             sr.color = Color.yellow;
+            sr.transform.localScale = new Vector3(0.4f, 0.4f, 1f); // small growth
+            sr.transform.position = new Vector3(transform.position.x, 0.76f, transform.position.z);
         }
         else if(stage == 2)
         {
-            sr.color = Color.green;
+            plantPosition = new Vector3(gameObject.transform.position.x, 0.62f, gameObject.transform.position.z);
+            // Replace plant with pickable plant object
+            GameObject newObjectInstance = Instantiate(grownPrefab, plantPosition, gameObject.transform.rotation);
+            Destroy(gameObject);
         }
     }
 
