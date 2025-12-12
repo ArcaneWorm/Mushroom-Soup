@@ -15,11 +15,11 @@
 - Trash: Drag items from inventory to the trash if items are not wanted / no longer needed.
 
 **Demo Video:**
-Check-in Demo:
-- https://drive.google.com/file/d/1Ed3IpVDlE9V0ckbT9BzOPVQ-eq3LGs0I/view?usp=sharing
-Demo featuring material collection, crafting, enemies, base building, and trash:
-- https://drive.google.com/file/d/1byTemITqTuMxEz7qQKUxLtI5z0RLHgOF/view?usp=share_link
-Farming Demo:
-- ///
-Slideshow Presentation:
-- ///
+- Check-in Demo:
+      - https://drive.google.com/file/d/1Ed3IpVDlE9V0ckbT9BzOPVQ-eq3LGs0I/view?usp=sharing
+- Demo featuring material collection, crafting, enemies, base building, and trash:
+      - https://drive.google.com/file/d/1byTemITqTuMxEz7qQKUxLtI5z0RLHgOF/view?usp=share_link
+- Farming Demo:
+      - ///
+- Slideshow Presentation:
+      - ///
