@@ -8,6 +8,11 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] string itemName = "DefaultItem";
     [SerializeField] bool inRange = false;
 
+    private AudioSource audioSource;
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public string GetItemName()
     {
@@ -17,7 +22,8 @@ public class InteractableObject : MonoBehaviour
     // This is called by SelectionManager when the player clicks
     public virtual void OnInteract()
     {
-        Debug.Log("Picked up: " + itemName);
+        Debug.Log("Interacted with: " + itemName);
+        AudioManager.Instance.PlaySFX(audioSource.clip);
 
         if (SelectionManager.Instance.selectedObject == gameObject) {
             // Check if inventory is full

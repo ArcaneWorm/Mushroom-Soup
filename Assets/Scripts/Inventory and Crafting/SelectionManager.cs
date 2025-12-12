@@ -12,8 +12,6 @@ public class SelectionManager : MonoBehaviour
 
     public GameObject selectedObject;
 
-    public GameObject selectedGardenBed;
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -34,15 +32,6 @@ public class SelectionManager : MonoBehaviour
     {
         HandleHover();
         HandleClick();
-
-        GardenBed gardenBed = selectedObject ? selectedObject.GetComponent<GardenBed>() : null;
-        
-
-        if (gardenBed && gardenBed.playerInRange)
-        {
-            interactionText.text = "Garden Bed";
-            selectedGardenBed = gardenBed.gameObject;
-        }
         
     }
 

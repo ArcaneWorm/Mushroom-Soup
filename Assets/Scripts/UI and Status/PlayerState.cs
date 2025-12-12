@@ -12,7 +12,6 @@ public class PlayerState : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
 
-
     public GameOverScreen gameOverScreen;
 
     private void Awake()

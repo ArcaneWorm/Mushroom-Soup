@@ -13,6 +13,7 @@ public class CraftingSystem : MonoBehaviour
     public GameObject survivalScreenUI;
 
     public List<string> inventoryItemList = new List<string>();
+    private AudioSource audioSource;
 
     // Category Button
     Button creatureBTN;
@@ -62,6 +63,8 @@ public class CraftingSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         isOpen = false;
 
         creatureBTN = craftingScreenUI.transform.Find("CreatureCareButton").GetComponent<Button>();
@@ -133,6 +136,7 @@ public class CraftingSystem : MonoBehaviour
 
     void CraftAnyItem(CraftingBlueprint blueprintToCraft)
     {
+        audioSource.Play();
         // Remove resources from inventory
         if (blueprintToCraft.numOfRequirements == 1)
         {

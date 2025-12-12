@@ -12,6 +12,7 @@ public class InventorySystem : MonoBehaviour
     public List<GameObject> slotList = new List<GameObject>();
     public List<string> itemList = new List<string>();
 
+
     // How many items you can have in a stack
     public int stackLimit = 5;
 

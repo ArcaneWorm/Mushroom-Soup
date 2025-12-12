@@ -12,10 +12,17 @@ public class GateInteration : InteractableObject
     public Sprite openSprite;
 
     private bool isOpen = false;
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public override void OnInteract()
     {
         Debug.Log("Interacted with gate");
+        AudioManager.Instance.PlaySFX(audioSource.clip);
 
         // Change open/close condition
         if (isOpen)
