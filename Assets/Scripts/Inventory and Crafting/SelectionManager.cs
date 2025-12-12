@@ -35,36 +35,15 @@ public class SelectionManager : MonoBehaviour
         HandleHover();
         HandleClick();
 
-        GardenBed gardenBed = selectionTransform.GetComponent<GardenBed>();
+        GardenBed gardenBed = selectedObject ? selectedObject.GetComponent<GardenBed>() : null;
+        
 
         if (gardenBed && gardenBed.playerInRange)
         {
-            if (gardenBed.isEmpty)
-            {
-                interactionText.text = "Garden Bed";
-                interactionInfoUI.SetActive(true);
-            }
-            else
-            {
-                interactionText.text = "Name of plant";
-                interactionInfoUI.SetActive(true);
-            }
-
+            interactionText.text = "Garden Bed";
             selectedGardenBed = gardenBed.gameObject;
         }
-        else
-        {
-            if (selectedGardenBed != null)
-            {
-                selectedGardenBed = null;
-            }
-        }
-
-        if (!gardenBed)
-        {
-            interactionText.text = "";
-            interactionInfoUI.SetActive(false);
-        }
+        
     }
 
     private void HandleHover()

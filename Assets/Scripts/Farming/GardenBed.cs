@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GardenBed : MonoBehaviour
 {
-    public bool isEmpty = true;
-
     public bool playerInRange;
 
+    private void Start()
+    {
+    }
 
     private void Update()
     {
@@ -21,4 +23,5 @@ public class GardenBed : MonoBehaviour
             playerInRange = false;
         }
     }
+
 }

@@ -6,6 +6,8 @@ public class PlayerState : MonoBehaviour
 {
     public static PlayerState Instance { get; set; }
 
+     public Transform playerBody;
+
     // ---- Player Health ---- //
     public float currentHealth;
     public float maxHealth;

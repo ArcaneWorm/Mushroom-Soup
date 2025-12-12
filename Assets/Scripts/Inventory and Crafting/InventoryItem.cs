@@ -11,6 +11,9 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     // If placeable, will have data, otherwise it will be null
     public BuildableItem buildableData;
 
+    // If seed
+    public bool isSeed;
+
  
     // --- Consumption --- //
     private GameObject itemPendingConsumption;

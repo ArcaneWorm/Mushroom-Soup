@@ -15,6 +15,9 @@ public class InventorySystem : MonoBehaviour
     // How many items you can have in a stack
     public int stackLimit = 5;
 
+    // Current selected item
+    public InventoryItem selectedItem;
+
     private GameObject itemToAdd;
     private GameObject slotToEquip;
 
@@ -79,21 +82,6 @@ public class InventorySystem : MonoBehaviour
 
     public void RemoveItem(string nameToRemove, int amountToRemove)
     {
-        // int counter = amountToRemove;
-
-        // for (var i = slotList.Count - 1; i >= 0; i--)
-        // {
-        //     if (slotList[i].transform.childCount > 0)
-        //     {
-        //         if (slotList[i].transform.GetChild(0).name == nameToRemove + "(Clone)" && counter != 0)
-        //         {
-        //             //Destroy the object immediately in case we need to add a crafted object right after
-        //             DestroyImmediate(slotList[i].transform.GetChild(0).gameObject);
-        //             counter -= 1;
-        //         }
-        //     }
-        // }
-
         int remaining = amountToRemove;
 
         // Loop through slots from last to first
@@ -200,7 +188,4 @@ public class InventorySystem : MonoBehaviour
         }
         return null;
     }
-
-
-
 }

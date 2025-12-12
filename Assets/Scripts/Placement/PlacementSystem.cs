@@ -14,6 +14,7 @@ public class PlacementSystem : MonoBehaviour
 
     private void Update()
     {
+
         if (previewObj == null) return;
 
         UpdatePreviewPosition();
@@ -76,8 +77,10 @@ public class PlacementSystem : MonoBehaviour
     private void CancelPlacement()
     {
         if (previewObj != null) Destroy(previewObj);
+
         previewObj = null;
         currentItem = null;
     }
+
 }
 
